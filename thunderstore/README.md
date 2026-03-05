@@ -1,4 +1,3 @@
-# Nine Sols Example Mod
+# Nine Sols Unity Explorer Fixer mod
 
-Write a description of your mod here, it will be displayed on thunderstore.
-Remember to update the icon.png to something representing your mod.
+Fixes Unity Explorer mod dying after exiting to the main menu.
