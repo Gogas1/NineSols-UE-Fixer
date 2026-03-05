@@ -3,7 +3,7 @@ schemaVersion = "0.0.1"
 
 [package]
 namespace = "gogas1"
-name = "UnityExplorer-Fixer"
+name = "UnityExplorer_Fixer"
 versionNumber = "0.1.0"
 description = "Fixes unity explorer dying after exiting to the main menu"
 websiteUrl = "https://github.com/Gogas1/UnityExplorer-Fixer"
