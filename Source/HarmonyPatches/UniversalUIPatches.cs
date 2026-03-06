@@ -12,10 +12,6 @@ namespace UnityExplorerFixer.HarmonyPatches {
         [HarmonyPostfix]
         private static void Init_Postfix() {
             try {
-                if(!UnityExplorerFixer.IsUnityExplorerPresent) {
-                    return;
-                }
-
                 if (UniversalUI.PoolHolder != null) {
                     RCGLifeCycle.DontDestroyForever(UniversalUI.PoolHolder);
                 }

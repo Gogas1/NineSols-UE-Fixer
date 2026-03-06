@@ -24,15 +24,15 @@ public class UnityExplorerFixer : BaseUnityPlugin {
 
     private Harmony harmony = null!;
 
-    public static bool IsUnityExplorerPresent = false;
-
     private void Awake() {
         try {
             Log.Init(Logger);
             RCGLifeCycle.DontDestroyForever(gameObject);
 
-            IsUnityExplorerPresent = Chainloader.PluginInfos.ContainsKey("com.originalnicodr.cinematicunityexplorer") || Chainloader.PluginInfos.ContainsKey("com.sinai.unityexplorer");
-            harmony = Harmony.CreateAndPatchAll(typeof(UnityExplorerFixer).Assembly);
+            var isUnityExplorerPresent = Chainloader.PluginInfos.ContainsKey("com.originalnicodr.cinematicunityexplorer") || Chainloader.PluginInfos.ContainsKey("com.sinai.unityexplorer");
+            if (isUnityExplorerPresent) {
+                harmony = Harmony.CreateAndPatchAll(typeof(UnityExplorerFixer).Assembly);
+            }
 
             Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
 
@@ -42,6 +42,8 @@ public class UnityExplorerFixer : BaseUnityPlugin {
     }
 
     private void OnDestroy() {
-        harmony.UnpatchSelf();
+        if (harmony != null) {
+            harmony.UnpatchSelf();
+        }
     }
 }
